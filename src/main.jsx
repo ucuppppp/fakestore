@@ -1,15 +1,15 @@
 // import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import {BrowserRouter as Router, Routes, Route} from "react-router";
-import './index.css'
-import Home from './home.jsx'
-import Login from './login.jsx';
+import App from './App'
+import React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-    </Routes>
-  </Router>,
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      < App/>  
+    </QueryClientProvider>
+  </React.StrictMode>
 )
